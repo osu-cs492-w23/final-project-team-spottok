@@ -7,11 +7,13 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.core.view.MotionEventCompat
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -139,6 +141,37 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+
+        val action: Int = MotionEventCompat.getActionMasked(event)
+
+        return when (action) {
+            MotionEvent.ACTION_DOWN -> {
+                Log.d(TAG, "Action was DOWN")
+                true
+            }
+            MotionEvent.ACTION_MOVE -> {
+                Log.d(TAG, "Action was MOVE")
+                true
+            }
+            MotionEvent.ACTION_UP -> {
+                Log.d(TAG, "Action was UP")
+                true
+            }
+            MotionEvent.ACTION_CANCEL -> {
+                Log.d(TAG, "Action was CANCEL")
+                true
+            }
+            MotionEvent.ACTION_OUTSIDE -> {
+                Log.d(TAG, "Movement occurred outside bounds of current screen element")
+                true
+            }
+            else -> super.onTouchEvent(event)
         }
     }
 }
