@@ -1,7 +1,6 @@
 package com.example.githubsearchwithnavigation.data
 
 import android.text.TextUtils
-import com.example.githubsearchwithnavigation.api.GitHubService
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

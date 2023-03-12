@@ -7,16 +7,14 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 @Entity
-data class GitHubRepo(
-    @Json(name = "full_name")
+data class TrackInfo(
+    @Json(name = "album")
+    val album: AlbumInfo,
+
+    @Json(name = "href")
+    val href: String,
+
+    @Json(name = "name")
     @PrimaryKey
-    val name: String,
-
-    @Json(name = "html_url")
-    val url: String,
-
-    val description: String?,
-
-    @Json(name = "stargazers_count")
-    val stars: Int
+    val songName: String
 ) : java.io.Serializable

@@ -5,8 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.githubsearchwithnavigation.data.AppDatabase
-import com.example.githubsearchwithnavigation.data.BookmarkedReposRepository
-import com.example.githubsearchwithnavigation.data.GitHubRepo
 import kotlinx.coroutines.launch
 
 /**

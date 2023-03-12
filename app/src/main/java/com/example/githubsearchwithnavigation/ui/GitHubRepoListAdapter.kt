@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubsearchwithnavigation.R
-import com.example.githubsearchwithnavigation.data.GitHubRepo
 
 /**
  * This is the constructor for a RecyclerView adapter for lists of GitHub repos.

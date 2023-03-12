@@ -18,7 +18,6 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubsearchwithnavigation.R
-import com.example.githubsearchwithnavigation.data.GitHubRepo
 import com.example.githubsearchwithnavigation.data.LoadingStatus
 import com.google.android.material.progressindicator.CircularProgressIndicator
 

@@ -7,7 +7,6 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubsearchwithnavigation.R
-import com.example.githubsearchwithnavigation.data.GitHubRepo
 
 class BookmarkedReposActivity : AppCompatActivity() {
     private val viewModel:BookmarkedReposViewModel by viewModels()
@@ -16,7 +15,7 @@ class BookmarkedReposActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bookmarked_repos)
+        setContentView(R.layout.activity_liked_songs)
 
         /*
          * Set up RecyclerView

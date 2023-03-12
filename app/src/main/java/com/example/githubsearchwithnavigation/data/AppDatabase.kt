@@ -9,9 +9,9 @@ import androidx.room.RoomDatabase
  * This class represents the entrypoint into the Room-based database for the app.  It is a
  * singleton class, whose single instance you can access through the `getInstance()` method.
  */
-@Database(entities = [GitHubRepo::class], version = 1)
+@Database(entities = [TrackInfo::class], version = 1)
 abstract class AppDatabase: RoomDatabase() {
-    abstract fun gitHubRepoDao(): GitHubRepoDao
+    abstract fun spotifyDao(): SpotifyDao
 
     companion object {
         @Volatile private var instance: AppDatabase? = null
@@ -20,7 +20,7 @@ abstract class AppDatabase: RoomDatabase() {
             Room.databaseBuilder(
                 context,
                 AppDatabase::class.java,
-                "bookmarkedRepos.db"
+                "likedSongs.db"
             ).build()
 
         /**

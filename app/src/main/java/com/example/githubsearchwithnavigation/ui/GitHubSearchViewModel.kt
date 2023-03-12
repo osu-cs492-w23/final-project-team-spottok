@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.githubsearchwithnavigation.api.GitHubService
-import com.example.githubsearchwithnavigation.data.GitHubRepo
 import com.example.githubsearchwithnavigation.data.GitHubReposRepository
 import com.example.githubsearchwithnavigation.data.LoadingStatus
 import kotlinx.coroutines.launch

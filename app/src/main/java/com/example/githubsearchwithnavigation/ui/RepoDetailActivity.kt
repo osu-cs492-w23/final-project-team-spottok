@@ -11,7 +11,6 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.content.res.AppCompatResources
 import com.example.githubsearchwithnavigation.R
-import com.example.githubsearchwithnavigation.data.GitHubRepo
 import com.google.android.material.snackbar.Snackbar
 
 const val EXTRA_GITHUB_REPO = "GITHUB_REPO"
@@ -24,7 +23,7 @@ class RepoDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_repo_detail)
+        setContentView(R.layout.activity_song_detail)
 
         /*
          * If an intent was used to launch this activity and it contains information about a
