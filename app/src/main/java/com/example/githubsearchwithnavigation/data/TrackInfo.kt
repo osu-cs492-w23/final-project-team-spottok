@@ -6,7 +6,6 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-@Entity
 data class TrackInfo(
     @Json(name = "album")
     val album: AlbumInfo,
@@ -15,6 +14,5 @@ data class TrackInfo(
     val href: String,
 
     @Json(name = "name")
-    @PrimaryKey
     val songName: String
 ) : java.io.Serializable
