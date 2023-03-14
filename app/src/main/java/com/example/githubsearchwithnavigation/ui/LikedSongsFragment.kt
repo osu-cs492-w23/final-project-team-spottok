@@ -1,15 +1,14 @@
 package com.example.githubsearchwithnavigation.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubsearchwithnavigation.R
 
-class BookmarkedReposFragment : Fragment(R.layout.liked_songs_fragment) {
-    private val viewModel:BookmarkedReposViewModel by viewModels()
+class LikedSongsFragment : Fragment(R.layout.liked_songs_fragment) {
+    private val viewModel:LikedSongsViewModel by viewModels()
     private val repoListAdapter = GitHubRepoListAdapter(::onGitHubRepoClick)
     private lateinit var bookmarkedReposRV: RecyclerView
 

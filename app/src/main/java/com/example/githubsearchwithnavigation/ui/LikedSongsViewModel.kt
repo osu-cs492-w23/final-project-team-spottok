@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 /**
  * This is the ViewModel class that manages data for the UI related to bookmarked GitHub repos.
  */
-class BookmarkedReposViewModel(application: Application): AndroidViewModel(application) {
+class LikedSongsViewModel(application: Application): AndroidViewModel(application) {
     private val repository = BookmarkedReposRepository(
         AppDatabase.getInstance(application).gitHubRepoDao()
     )

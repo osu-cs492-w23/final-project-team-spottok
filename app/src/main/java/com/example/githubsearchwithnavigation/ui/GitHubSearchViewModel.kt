@@ -4,12 +4,20 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.githubsearchwithnavigation.data.GitHubReposRepository
+import com.example.githubsearchwithnavigation.data.MainPageSongsRepository
 import com.example.githubsearchwithnavigation.data.LoadingStatus
 import kotlinx.coroutines.launch
 
+
+/**
+ * THIS WILL BE THE VIEW MODEL FOR OUR MAIN PAGE
+ * IT WILL LOAD THE SONG, ALBUM NAME, PLAY/PAUSE, AND ALBUM PICTURE
+ */
+
+
+
 class GitHubSearchViewModel: ViewModel() {
-    private val repository = GitHubReposRepository(GitHubService.create())
+    private val repository = MainPageSongsRepository(GitHubService.create())
 
     /*
      * The most recent search results from the GitHub API are stored in this private property.
