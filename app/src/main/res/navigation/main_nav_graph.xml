@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/main_page" >
+
+<!--     navigate to settings -->
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.example.githubsearchwithnavigation.ui.SettingsFragment"
+        android:label="@string/label_settings" />
+
+<!--     navigate to "main" page -->
+    <fragment
+        android:id="@+id/main_page"
+        android:name=""
+        android:label="@string/label_main" />
+
+<!--    navigate to liked songs page -->
+<!--    allow user to click on a song to go to the song detail -->
+    <fragment
+        android:id="@+id/liked_songs"
+        android:name=""
+        android:label="@string/label_liked_songs">
+        <action
+            android:id="@+id/navigate_to_song_detail"
+            app:destination="@id/song_detail" />
+    </fragment>
+
+<!--     navigate to song detail page-->
+<!--     will take in argument for a certain track info (album.albumName, songName) -->
+    <fragment
+        android:id="@+id/song_detail"
+        android:name=""
+        android:label="@string/label_detail">
+        <argument
+            android:name="song"
+            app:argType="com.example/githubsearchwithnavigation.data.TrackInfo"/>
+    </fragment>
+
+
+</navigation>

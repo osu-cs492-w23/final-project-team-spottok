@@ -8,14 +8,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubsearchwithnavigation.R
 
-class BookmarkedReposActivity : AppCompatActivity() {
+class BookmarkedReposFragment : Fragment(R.layout.liked_songs_fragment) {
     private val viewModel:BookmarkedReposViewModel by viewModels()
     private val repoListAdapter = GitHubRepoListAdapter(::onGitHubRepoClick)
     private lateinit var bookmarkedReposRV: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_liked_songs)
+        setContentView(R.layout.liked_songs_fragment)
 
         /*
          * Set up RecyclerView

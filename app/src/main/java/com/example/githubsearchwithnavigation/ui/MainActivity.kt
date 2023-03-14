@@ -135,7 +135,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.action_bookmarks -> {
-                val intent = Intent(this, BookmarkedReposActivity::class.java)
+                val intent = Intent(this, BookmarkedReposFragment::class.java)
                 startActivity(intent)
                 true
             }

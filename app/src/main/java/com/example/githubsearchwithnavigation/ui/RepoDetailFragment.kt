@@ -3,27 +3,27 @@ package com.example.githubsearchwithnavigation.ui
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.githubsearchwithnavigation.R
 import com.google.android.material.snackbar.Snackbar
 
 const val EXTRA_GITHUB_REPO = "GITHUB_REPO"
 
-class RepoDetailActivity : AppCompatActivity() {
-    private var repo: GitHubRepo? = null
+class RepoDetailActivity : Fragment(R.layout.song_detail_fragment) {
+//    private var repo: GitHubRepo? = null
     private var isBookmarked = false
 
     private val viewModel: BookmarkedReposViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_song_detail)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         /*
          * If an intent was used to launch this activity and it contains information about a
