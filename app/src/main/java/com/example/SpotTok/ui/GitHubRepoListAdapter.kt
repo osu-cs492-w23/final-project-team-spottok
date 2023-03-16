@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.SpotTok.R
 import com.example.SpotTok.data.TrackInfo
+import com.example.githubsearchwithnavigation.R
 
 
 class GitHubRepoListAdapter(
