@@ -4,7 +4,8 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class AlbumInfo(
-    @Json(name = "name")
-    val albumName: String
+data class ExternalUrl(
+    // gets the full link to open the song link on spotify
+    @Json(name = "spotify")
+    val spotifyUrl: String
 ) : java.io.Serializable
