@@ -47,6 +47,7 @@ class GitHubRepoListAdapter(
             itemView.setOnClickListener {
                 currentTrackInfo?.let(onClick)
             }
+
         }
 
         fun bind(trackInfo: TrackInfo) {
