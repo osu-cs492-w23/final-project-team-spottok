@@ -1,7 +1,6 @@
-package com.example.githubsearchwithnavigation.data
+package com.example.SpotTok.data
 
-import android.text.TextUtils
-import com.example.githubsearchwithnavigation.api.SpotifyService
+import com.example.SpotTok.api.SpotifyService
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -22,7 +21,7 @@ class MainPageSongsRepository(
         market: String?,
         fields: String?,
         limit: String?
-    ): Result<List<TrackInfo>> =
+    ): Result<SpotifyPlaylistResults> =
 
         withContext(dispatcher) {
             try {
@@ -30,7 +29,7 @@ class MainPageSongsRepository(
                     playlist_id, market, fields, limit
                 )
                 if (response.isSuccessful) {
-                    Result.success(response.body()?.items ?: listOf())
+                    Result.success(response.body()!!)
                 } else {
                     Result.failure(Exception(response.errorBody()?.string()))
                 }

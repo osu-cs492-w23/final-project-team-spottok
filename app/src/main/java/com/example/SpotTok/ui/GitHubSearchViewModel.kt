@@ -1,11 +1,11 @@
-package com.example.githubsearchwithnavigation.ui
+package com.example.SpotTok.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.githubsearchwithnavigation.data.MainPageSongsRepository
-import com.example.githubsearchwithnavigation.data.LoadingStatus
+import com.example.SpotTok.data.MainPageSongsRepository
+import com.example.SpotTok.data.LoadingStatus
 import kotlinx.coroutines.launch
 
 

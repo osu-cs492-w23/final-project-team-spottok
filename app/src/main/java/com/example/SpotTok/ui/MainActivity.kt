@@ -1,6 +1,7 @@
-package com.example.githubsearchwithnavigation.ui
+package com.example.SpotTok.ui
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -13,16 +14,14 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.core.view.MotionEventCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.githubsearchwithnavigation.R
-import com.example.githubsearchwithnavigation.data.LoadingStatus
+import com.example.SpotTok.R
+import com.example.SpotTok.data.LoadingStatus
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
-class MainPageFragment: Fragment(R.layout.main_page_fragment) {
+class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
 
     private val repoListAdapter = GitHubRepoListAdapter(::onGitHubRepoClick)
@@ -31,8 +30,6 @@ class MainPageFragment: Fragment(R.layout.main_page_fragment) {
     private lateinit var searchResultsListRV: RecyclerView
     private lateinit var searchErrorTV: TextView
     private lateinit var loadingIndicator: CircularProgressIndicator
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

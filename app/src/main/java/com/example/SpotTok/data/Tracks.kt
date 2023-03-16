@@ -1,10 +1,10 @@
-package com.example.githubsearchwithnavigation.data
+package com.example.SpotTok.data
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class AlbumInfo(
-    @Json(name = "name")
-    val albumName: String
+data class Tracks(
+    @Json(name = "track")
+    val tracks: TrackInfo
 ) : java.io.Serializable

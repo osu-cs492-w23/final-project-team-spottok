@@ -7,7 +7,7 @@
 <!--     navigate to settings -->
     <fragment
         android:id="@+id/settings"
-        android:name="com.example.githubsearchwithnavigation.ui.SettingsFragment"
+        android:name="com.example.SpotTok.ui.SettingsFragment"
         android:label="@string/label_settings" />
 
 <!--     navigate to "main" page -->

@@ -1,4 +1,4 @@
-package com.example.githubsearchwithnavigation.data
+package com.example.SpotTok.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

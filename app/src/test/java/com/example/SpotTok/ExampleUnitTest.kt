@@ -1,4 +1,4 @@
-package com.example.githubsearchwithnavigation
+package com.example.SpotTok
 
 import org.junit.Test
 

@@ -1,32 +1,21 @@
-package com.example.githubsearchwithnavigation.ui
+package com.example.SpotTok.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.githubsearchwithnavigation.R
+import com.example.SpotTok.R
+import com.example.SpotTok.data.TrackInfo
 
-/**
- * This is the constructor for a RecyclerView adapter for lists of GitHub repos.
- *
- * @param onGitHubRepoClick This should be a function for handling a click on an individual repo
- *   in the list of repos managed by this adapter.  When the repo is clicked, a representation of
- *   that repo is passed into this function as a `GitHubRepo` object.
- */
+
 class GitHubRepoListAdapter(
-    private val onGitHubRepoClick: (GitHubRepo) -> Unit
+    private val onGitHubRepoClick: (TrackInfo) -> Unit
 ) : RecyclerView.Adapter<GitHubRepoListAdapter.GitHubRepoViewHolder>() {
-    private var gitHubRepoList = listOf<GitHubRepo>()
+    private var gitHubRepoList = listOf<TrackInfo>()
 
-    /**
-     * This method is called to completely replace the list of repositories being managed by an
-     * adapter.
-     *
-     * @param newRepoList A new list of GitHub repositories to replace the one being managed by
-     *   this adapter.
-     */
-    fun updateRepoList(newRepoList: List<GitHubRepo>?) {
+
+    fun updateRepoList(newRepoList: List<TrackInfo>?) {
         gitHubRepoList = newRepoList ?: listOf()
         notifyDataSetChanged()
     }
@@ -45,10 +34,10 @@ class GitHubRepoListAdapter(
 
     class GitHubRepoViewHolder(
         itemView: View,
-        private val onClick: (GitHubRepo) -> Unit
+        private val onClick: (TrackInfo) -> Unit
     ) : RecyclerView.ViewHolder(itemView) {
         private val nameTV: TextView = itemView.findViewById(R.id.tv_name)
-        private var currentGitHubRepo: GitHubRepo? = null
+        private var currentTrackInfo: TrackInfo? = null
 
         /*
          * Set up a click listener on this individual ViewHolder.  Call the provided onClick
@@ -56,13 +45,13 @@ class GitHubRepoListAdapter(
          */
         init {
             itemView.setOnClickListener {
-                currentGitHubRepo?.let(onClick)
+                currentTrackInfo?.let(onClick)
             }
         }
 
-        fun bind(gitHubRepo: GitHubRepo) {
-            currentGitHubRepo = gitHubRepo
-            nameTV.text = gitHubRepo.name
+        fun bind(trackInfo: TrackInfo) {
+            currentTrackInfo = trackInfo
+            nameTV.text = trackInfo.songName
         }
     }
 }

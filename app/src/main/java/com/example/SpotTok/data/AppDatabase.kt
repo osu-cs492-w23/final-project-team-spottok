@@ -1,4 +1,4 @@
-package com.example.githubsearchwithnavigation.data
+package com.example.SpotTok.data
 
 import android.content.Context
 import androidx.room.Database
@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase
  * This class represents the entrypoint into the Room-based database for the app.  It is a
  * singleton class, whose single instance you can access through the `getInstance()` method.
  */
-@Database(entities = [TrackInfo::class], version = 1)
+@Database(entities = [SpotifyEntity::class], version = 1)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun spotifyDao(): SpotifyDao
 

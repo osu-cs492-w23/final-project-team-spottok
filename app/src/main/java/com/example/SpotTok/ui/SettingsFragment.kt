@@ -1,10 +1,10 @@
-package com.example.githubsearchwithnavigation.ui
+package com.example.SpotTok.ui
 
 import android.os.Bundle
 import androidx.preference.MultiSelectListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import com.example.githubsearchwithnavigation.R
+import com.example.SpotTok.R
 
 class SettingsFragment: PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {

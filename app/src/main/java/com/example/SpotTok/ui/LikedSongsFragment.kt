@@ -1,11 +1,11 @@
-package com.example.githubsearchwithnavigation.ui
+package com.example.SpotTok.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.githubsearchwithnavigation.R
+import com.example.SpotTok.R
 
 class LikedSongsFragment : Fragment(R.layout.liked_songs_fragment) {
     private val viewModel:LikedSongsViewModel by viewModels()

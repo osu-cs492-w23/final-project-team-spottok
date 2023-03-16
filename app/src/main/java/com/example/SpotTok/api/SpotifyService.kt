@@ -1,6 +1,6 @@
-package com.example.githubsearchwithnavigation.api
+package com.example.SpotTok.api
 
-import com.example.githubsearchwithnavigation.data.SpotifyPlaylistResults
+import com.example.SpotTok.data.SpotifyPlaylistResults
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory

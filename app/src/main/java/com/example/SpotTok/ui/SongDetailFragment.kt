@@ -1,4 +1,4 @@
-package com.example.githubsearchwithnavigation.ui
+package com.example.SpotTok.ui
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.githubsearchwithnavigation.R
+import com.example.SpotTok.R
 import com.google.android.material.snackbar.Snackbar
 
 const val EXTRA_GITHUB_REPO = "GITHUB_REPO"
