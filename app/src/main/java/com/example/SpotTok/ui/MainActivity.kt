@@ -24,7 +24,7 @@ import com.google.android.material.progressindicator.CircularProgressIndicator
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
 
-    private val repoListAdapter = GitHubRepoListAdapter(::onGitHubRepoClick)
+    private val repoListAdapter = LikedSongsAdapter(::onGitHubRepoClick)
     private val viewModel: MainPageViewModel by viewModels()
 
     private lateinit var searchResultsListRV: RecyclerView

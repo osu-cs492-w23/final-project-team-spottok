@@ -22,16 +22,16 @@ class LikedSongsViewModel(application: Application): AndroidViewModel(applicatio
      * within a LiveData object.  The list in the LiveData object is automatically updated
      * whenever the contents of the database changes.
      */
-    val bookmarkedRepos = repository.getAllLikedSongs().asLiveData()
+    val likedSongs = repository.getAllLikedSongs().asLiveData()
 
-    fun addBookmarkedRepo(spotifyEntity: SpotifyEntity) {
+    fun addLikedSong(spotifyEntity: SpotifyEntity) {
         viewModelScope.launch {
             repository.insertLikedSong(spotifyEntity)
         }
     }
 
 
-    fun removeBookmarkedRepo(spotifyEntity: SpotifyEntity) {
+    fun removeLikedSong(spotifyEntity: SpotifyEntity) {
         viewModelScope.launch {
             repository.removeLikedSong(spotifyEntity)
         }

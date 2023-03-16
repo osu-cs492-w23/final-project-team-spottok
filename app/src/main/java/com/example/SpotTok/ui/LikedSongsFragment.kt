@@ -2,30 +2,42 @@ package com.example.SpotTok.ui
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.viewModels
+import android.view.View
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.SpotTok.data.Tracks
 import com.example.githubsearchwithnavigation.R
 
 class LikedSongsFragment : Fragment(R.layout.liked_songs_fragment) {
     private val viewModel:LikedSongsViewModel by viewModels()
-    private val repoListAdapter = GitHubRepoListAdapter(::onGitHubRepoClick)
-    private lateinit var bookmarkedReposRV: RecyclerView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.liked_songs_fragment)
+    // DO WE EVEN NEED THIS ADAPTER?
+    private val allSongAdapter = SongAdapter(::onLikedSongClick)
+
+    private lateinit var likedSongsRV: RecyclerView
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         /*
          * Set up RecyclerView
          */
-        bookmarkedReposRV = findViewById(R.id.rv_bookmarked_repos)
-        bookmarkedReposRV.layoutManager = LinearLayoutManager(this)
-        bookmarkedReposRV.setHasFixedSize(true)
-        bookmarkedReposRV.adapter = repoListAdapter
+        likedSongsRV = view.findViewById(R.id.rv_bookmarked_repos)
+        likedSongsRV.layoutManager = LinearLayoutManager(requireContext())
+        likedSongsRV.setHasFixedSize(true)
+        likedSongsRV.adapter = allSongAdapter
 
-        viewModel.bookmarkedRepos.observe(this) {
-            repoListAdapter.updateRepoList(it)
+        viewModel.likedSongs.observe(viewLifecycleOwner) {
+            // display the recycler view of the list of bookmarked songs in the database here
+
+
+// ASK HESS WHAT TO DO HERE
+
+
+
+        //            allSongAdapter.updatePlaylist(it)
         }
     }
 
@@ -34,10 +46,7 @@ class LikedSongsFragment : Fragment(R.layout.liked_songs_fragment) {
      * in the list of GitHub repos.  When a repo is clicked, a new activity is launched to view
      * details about that repo.
      */
-    private fun onGitHubRepoClick(repo: GitHubRepo) {
-        val intent = Intent(this, RepoDetailActivity::class.java).apply {
-            putExtra(EXTRA_GITHUB_REPO, repo)
-        }
-        startActivity(intent)
+    private fun onLikedSongClick(currTrack: Tracks) {
+        // Display Snackbar of song info here
     }
 }
