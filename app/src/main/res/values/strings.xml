@@ -5,30 +5,7 @@
     <string name="label_detail">Song Details</string>
     <string name="label_liked_songs">Liked Songs</string>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <string name="app_name">GitHub Search with Navigation</string>
-
-    <string name="search_hint">Search GitHub…</string>
-    <string name="search">Search</string>
-
+    <string name="app_name">Spotok</string>
 
     <string name="search_error">Error fetching search results: %1$s</string>
 
@@ -45,46 +22,19 @@
 
     <string name="pref_category_search">Search settings</string>
 
-    <string name="pref_sort_title">Sort by</string>
-    <string name="pref_user_title">Search only for repos by this GitHub user</string>
-    <string name="pref_language_title">Search by programming language</string>
-    <string name="pref_first_issues_title">Minimum number of good first issues</string>
+    <string name="pref_sort_title">Select Genre</string>
 
-    <string name="pref_sort_key" translatable="false">sort</string>
-    <string name="pref_user_key" translatable="false">user</string>
-    <string name="pref_language_key" translatable="false">language</string>
-    <string name="pref_first_issues_key" translatable="false">first_issues</string>
+    <string name="pref_sort_key" translatable="false">genre</string>
 
-    <string name="pref_sort_entry_stars">Stars</string>
-    <string name="pref_sort_entry_forks">Forks</string>
-    <string name="pref_sort_entry_updated">Most-recently updated</string>
+    <string name="pref_sort_kpop">Kpop</string>
+    <string name="pref_sort_rap">Rap</string>
+    <string name="pref_sort_pop">Pop</string>
 
-    <string name="pref_sort_val_stars" translatable="false">stars</string>
-    <string name="pref_sort_val_forks" translatable="false">forks</string>
-    <string name="pref_sort_val_updated" translatable="false">updated</string>
+    <string name="pref_sort_val_kpop" translatable="false">Kpop</string>
+    <string name="pref_sort_val_rap" translatable="false">Rap</string>
+    <string name="pref_sort_val_pop" translatable="false">Pop</string>
 
-    <string name="pref_sort_default">@string/pref_sort_val_stars</string>
+    <string name="pref_sort_default">@string/pref_sort_val_kpop</string>
 
-    <string name="pref_language_entry_c">C</string>
-    <string name="pref_language_entry_cpp">C++</string>
-    <string name="pref_language_entry_java">Java</string>
-    <string name="pref_language_entry_kotlin">Kotlin</string>
-    <string name="pref_language_entry_javascript">Javascript</string>
-    <string name="pref_language_entry_rust">Rust</string>
-    <string name="pref_language_entry_python">Python</string>
 
-    <string name="pref_language_val_c" translatable="false">c</string>
-    <string name="pref_language_val_cpp" translatable="false">c++</string>
-    <string name="pref_language_val_java" translatable="false">java</string>
-    <string name="pref_language_val_kotlin" translatable="false">kotlin</string>
-    <string name="pref_language_val_javascript" translatable="false">javascript</string>
-    <string name="pref_language_val_rust" translatable="false">rust</string>
-    <string name="pref_language_val_python" translatable="false">python</string>
-
-    <string name="pref_language_not_set">Not set</string>
-
-    <plurals name="pref_language_summary">
-        <item quantity="one">%d language</item>
-        <item quantity="other">%d languages</item>
-    </plurals>
 </resources>

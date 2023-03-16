@@ -14,17 +14,19 @@ import android.widget.TextView
 import androidx.core.view.MotionEventCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubsearchwithnavigation.R
 import com.example.SpotTok.data.LoadingStatus
+import com.example.SpotTok.data.TrackInfo
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class MainPageFragment: Fragment(R.layout.main_page_fragment) {
     private val TAG = "MainActivity"
 
-    private val repoListAdapter = GitHubRepoListAdapter(::onSongClick)
+    private val repoListAdapter = GitHubRepoListAdapter(::onSongLikeClick)
     private val viewModel: MainPageViewModel by viewModels()
 
     private lateinit var searchResultsListRV: RecyclerView
@@ -102,71 +104,13 @@ class MainPageFragment: Fragment(R.layout.main_page_fragment) {
          * settings to influence the API call.
          */
         val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        val genre = prefs.getString(getString(R.string.pref_genre_key), null)
-        viewModel.loadSearchResults(/*enter in query parameters*/)
+        //val genre = prefs.getString(getString(R.string.pref_genre_key), null)
+        //viewModel.loadSearchResults(/*enter in query parameters*/)
         searchResultsListRV.scrollToPosition(0)
     }
 
-    /**
-     * This method is passed into the RecyclerView adapter to handle clicks on individual items
-     * in the list of GitHub repos.  When a repo is clicked, a new activity is launched to view
-     * details about that repo.
-     */
-    private fun onSongClick(repo: GitHubRepo) {
-        val intent = Intent(this, RepoDetailActivity::class.java)
-        intent.putExtra(EXTRA_GITHUB_REPO, repo)
-        startActivity(intent)
-    }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.activity_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_settings -> {
-                val intent = Intent(this, SettingsActivity::class.java)
-                startActivity(intent)
-                true
-            }
-            R.id.action_bookmarks -> {
-                val intent = Intent(this, LikedSongsFragment::class.java)
-                startActivity(intent)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-
-
-    fun onTouchEvent(event: MotionEvent): Boolean {
-
-        val action: Int = MotionEventCompat.getActionMasked(event)
-
-        return when (action) {
-            MotionEvent.ACTION_DOWN -> {
-                Log.d(TAG, "Action was DOWN")
-                true
-            }
-            MotionEvent.ACTION_MOVE -> {
-                Log.d(TAG, "Action was MOVE")
-                true
-            }
-            MotionEvent.ACTION_UP -> {
-                Log.d(TAG, "Action was UP")
-                true
-            }
-            MotionEvent.ACTION_CANCEL -> {
-                Log.d(TAG, "Action was CANCEL")
-                true
-            }
-            MotionEvent.ACTION_OUTSIDE -> {
-                Log.d(TAG, "Movement occurred outside bounds of current screen element")
-                true
-            }
-            else -> super.onTouchEvent(event)
-        }
+    private fun onSongLikeClick(song: TrackInfo) {
+        //add track to likes
     }
 }

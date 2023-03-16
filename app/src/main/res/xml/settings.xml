@@ -13,14 +13,6 @@
             app:useSimpleSummaryProvider="true" />
 
 
-        <MultiSelectListPreference
-            android:key="@string/pref_language_key"
-            android:title="@string/pref_language_title"
-            android:dialogTitle="@string/pref_language_title"
-            android:entries="@array/pref_language_entries"
-            android:entryValues="@array/pref_language_values" />
-
-
     </PreferenceCategory>
 
 </PreferenceScreen>
