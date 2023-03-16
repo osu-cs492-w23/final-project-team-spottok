@@ -17,7 +17,7 @@ import androidx.fragment.app.viewModels
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.SpotTok.R
+import com.example.githubsearchwithnavigation.R
 import com.example.SpotTok.data.LoadingStatus
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
@@ -25,7 +25,7 @@ class MainPageFragment: Fragment(R.layout.main_page_fragment) {
     private val TAG = "MainActivity"
 
     private val repoListAdapter = GitHubRepoListAdapter(::onGitHubRepoClick)
-    private val viewModel: GitHubSearchViewModel by viewModels()
+    private val viewModel: MainPageViewModel by viewModels()
 
     private lateinit var searchResultsListRV: RecyclerView
     private lateinit var searchErrorTV: TextView

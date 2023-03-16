@@ -11,7 +11,6 @@ interface SpotifyDao {
 
     @Insert
     suspend fun insert(spotifyEntity: SpotifyEntity)
-
     @Delete
     suspend fun delete(spotifyEntity: SpotifyEntity)
 

@@ -5,14 +5,16 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.SpotTok.data.AppDatabase
+import com.example.SpotTok.data.LikedSongsRepository
+import com.example.SpotTok.data.SpotifyEntity
 import kotlinx.coroutines.launch
 
 /**
  * This is the ViewModel class that manages data for the UI related to bookmarked GitHub repos.
  */
 class LikedSongsViewModel(application: Application): AndroidViewModel(application) {
-    private val repository = BookmarkedReposRepository(
-        AppDatabase.getInstance(application).gitHubRepoDao()
+    private val repository = LikedSongsRepository(
+        AppDatabase.getInstance(application).spotifyDao()
     )
 
     /**
@@ -20,34 +22,21 @@ class LikedSongsViewModel(application: Application): AndroidViewModel(applicatio
      * within a LiveData object.  The list in the LiveData object is automatically updated
      * whenever the contents of the database changes.
      */
-    val bookmarkedRepos = repository.getAllBookmarkedRepos().asLiveData()
+    val bookmarkedRepos = repository.getAllLikedSongs().asLiveData()
 
-    /**
-     * This method is used to trigger an insertion of a GitHub repo into the bookmarked repos
-     * database.  The operation runs in the background in a coroutine.
-     */
-    fun addBookmarkedRepo(repo: GitHubRepo) {
+    fun addBookmarkedRepo(spotifyEntity: SpotifyEntity) {
         viewModelScope.launch {
-            repository.insertBookmarkedRepo(repo)
+            repository.insertLikedSong(spotifyEntity)
         }
     }
 
-    /**
-     * This method is used to trigger a deletion of a GitHub repo from the bookmarked repos
-     * database.  The operation runs in the background in a coroutine.
-     */
-    fun removeBookmarkedRepo(repo: GitHubRepo) {
+
+    fun removeBookmarkedRepo(spotifyEntity: SpotifyEntity) {
         viewModelScope.launch {
-            repository.deleteBookmarkedRepo(repo)
+            repository.removeLikedSong(spotifyEntity)
         }
     }
 
-    /**
-     * This function triggers a query to the database to fetch a single bookmarked repo based on
-     * its name.
-     *
-     * @return Returns a LiveData object containing the repo matching the specified `name`.  The
-     *   LiveData object can be observed to react to the completion of the query.
-     */
-    fun getBookmarkedRepoByName(name: String) = repository.getBookmarkedRepoByName(name).asLiveData()
+
+   // fun getBookmarkedRepoByName(name: String) = repository.getBookmarkedRepoByName(name).asLiveData()
 }

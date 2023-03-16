@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.SpotTok.R
+import com.example.githubsearchwithnavigation.R
 
 class LikedSongsFragment : Fragment(R.layout.liked_songs_fragment) {
     private val viewModel:LikedSongsViewModel by viewModels()

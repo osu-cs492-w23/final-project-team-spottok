@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.SpotTok.api.SpotifyService
 import com.example.SpotTok.data.MainPageSongsRepository
 import com.example.SpotTok.data.LoadingStatus
 import kotlinx.coroutines.launch
@@ -16,8 +17,8 @@ import kotlinx.coroutines.launch
 
 
 
-class GitHubSearchViewModel: ViewModel() {
-    private val repository = MainPageSongsRepository(GitHubService.create())
+class MainPageViewModel: ViewModel() {
+    private val repository = MainPageSongsRepository(SpotifyService.create())
 
     /*
      * The most recent search results from the GitHub API are stored in this private property.
