@@ -9,7 +9,7 @@ data class TrackInfo(
     @Json(name = "id")
     val id: String,
 
-
+    // grabs the external url link, which will go to the link to open the song on Spotify
     @Json(name = "external_urls")
     val externalUrl: ExternalUrl,
 
@@ -19,5 +19,9 @@ data class TrackInfo(
 
     // gets the song name in full with features
     @Json(name = "name")
-    val songName: String
+    val songName: String,
+
+    // grabs a list of the artists information on the current track
+    @Json(name = "artists")
+    val artistList: List<ArtistsInfo>
 ) : java.io.Serializable
