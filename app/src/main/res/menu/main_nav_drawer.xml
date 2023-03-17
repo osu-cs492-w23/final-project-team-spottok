@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 <!--    Liked songs  -->
 
@@ -10,4 +11,12 @@
 
 <!--    <item-->
 <!--        />-->
+    <item
+        android:id="@+id/liked_songs"
+        android:title="@string/label_liked_songs"
+        android:icon="@drawable/ic_baseline_star_outline_36" />
+    <item
+        android:id="@+id/settings"
+        android:title="@string/label_settings"
+        android:icon="@drawable/ic_action_settings" />
 </menu>
