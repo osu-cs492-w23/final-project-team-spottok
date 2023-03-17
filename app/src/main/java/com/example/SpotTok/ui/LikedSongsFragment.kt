@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.SpotTok.data.SpotifyEntity
 import com.example.SpotTok.data.Tracks
 import com.example.githubsearchwithnavigation.R
 import com.google.android.material.snackbar.Snackbar
@@ -36,7 +37,7 @@ class LikedSongsFragment : Fragment(R.layout.liked_songs_fragment) {
     }
 
 
-    private fun onLikedSongClick() {
+    private fun onLikedSongClick(spotifyEntity: SpotifyEntity): Unit {
         // Display Snackbar of song like feature here
         Snackbar.make(
             likedSongsRV,
