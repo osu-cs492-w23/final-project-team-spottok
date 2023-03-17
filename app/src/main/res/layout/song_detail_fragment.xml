@@ -8,18 +8,50 @@
     android:layout_height="match_parent"
     tools:context=".ui.RepoDetailActivity">
 
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/loading_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_gravity="center"
+        android:visibility="invisible" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="8dp">
 
+        <ImageView
+            android:id="@+id/iv_song_cover"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
+
         <TextView
-            android:id="@+id/tv_repo_name"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_song_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?attr/textAppearanceHeadline3"
+            android:textAlignment="center"
             android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tv_song_artist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/tv_song_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBody1" />
 
         <TextView
             android:id="@+id/tv_repo_stars"
@@ -29,12 +61,24 @@
             app:drawableStartCompat="@drawable/ic_baseline_star_outline_36"
             android:drawablePadding="8dp" />
 
-        <TextView
-            android:id="@+id/tv_repo_description"
+        <Button
+            android:id="@+id/iv_play_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceBody1"/>
+            android:layout_gravity="center" />
+
+        <SeekBar
+            android:id="@+id/iv_song_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
 
     </LinearLayout>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/song_detail_fragment_bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
