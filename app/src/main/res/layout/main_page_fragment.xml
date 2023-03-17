@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".ui.MainActivity">
+    tools:context="com.example.SpotTok.ui.MainActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:hint="@string/search_hint"
-ls        app:startIconDrawable="@drawable/ic_baseline_search_24">
+        app:startIconDrawable="@drawable/ic_baseline_search_24">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_search_box"
             android:layout_width="match_parent"
