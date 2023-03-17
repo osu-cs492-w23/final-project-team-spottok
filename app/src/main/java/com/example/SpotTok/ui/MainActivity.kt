@@ -14,6 +14,12 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.core.view.MotionEventCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +32,8 @@ class MainActivity : AppCompatActivity() {
 
     private val repoListAdapter = LikedSongsAdapter(::onGitHubRepoClick)
     private val viewModel: MainPageViewModel by viewModels()
+
+    private lateinit var appBarConfig: AppBarConfiguration
 
     private lateinit var searchResultsListRV: RecyclerView
     private lateinit var searchErrorTV: TextView
@@ -48,6 +56,18 @@ class MainActivity : AppCompatActivity() {
         searchResultsListRV.layoutManager = LinearLayoutManager(this)
         searchResultsListRV.setHasFixedSize(true)
         searchResultsListRV.adapter = repoListAdapter
+
+        /*
+         * Set up the Navigation
+         */
+        val navHostFragment = supportFragmentManager.findFragmentById(
+            R.id.nav_host_fragment
+        ) as NavHostFragment
+        val navController = navHostFragment.navController
+
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        appBarConfig = AppBarConfiguration(navController.graph, drawerLayout)
+        setupActionBarWithNavController(navController, appBarConfig)
 
         /*
          * Set up an observer on the current search results.  Every time the search results change,
@@ -109,6 +129,11 @@ class MainActivity : AppCompatActivity() {
                 searchResultsListRV.scrollToPosition(0)
             }
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp(appBarConfig) || super.onSupportNavigateUp()
     }
 
     /**
