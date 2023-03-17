@@ -22,11 +22,8 @@ import com.example.githubsearchwithnavigation.R
 class SongAdapter(private val onClick: (Tracks) -> Unit)
     : RecyclerView.Adapter<SongAdapter.ViewHolder>() {
     var allTracks: List<Tracks> = listOf()
-//    var forecastCity: ForecastCity? = null
 
-    /**
-     * This method is used to update the five-day forecast data stored by this adapter class.
-     */
+    // used to update new playlist items ON MAIN PAGE
     fun updatePlaylist(spotifyPlaylistResults: SpotifyPlaylistResults) {
         allTracks = spotifyPlaylistResults.items ?: listOf()
         notifyDataSetChanged()
@@ -41,12 +38,14 @@ class SongAdapter(private val onClick: (Tracks) -> Unit)
         return ViewHolder(view, onClick)
     }
 
-    // Probably won't need this onBindViewHolder function
-
+// ADJUST THIS TO FIT WITH PROJECT
 //    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //        holder.bind(this.allTracks[position])
 //    }
 
+
+    // NEW ITEM VIEW. USE DATA FROM DATA FOLDERS TO LOAD DATA FOR MAIN PAGE,
+    // EX. SONG NAME, ARTIST, SPOTIFY LINK, URI TO TRACK/SONG
     class ViewHolder(itemView: View, val onClick: (Tracks) -> Unit)
         : RecyclerView.ViewHolder(itemView) {
 
@@ -61,7 +60,13 @@ class SongAdapter(private val onClick: (Tracks) -> Unit)
 
         private val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(itemView.context)
 
-        // do not need onClickListener because we are not implementing clicking
+
+
+
+        // CAN HAVE ON CLICK LISTENER IF YOU WANT, BUT WE ARE NOT ALLOWING USERS TO CLICK I THINK
+        // USERS CAN PLAY/PAUSE AND LIKE SONGS. IF THEY LIKE SONG
+        // ADD TRACK.NAME AND TRACK.NAME.ARTIST TO THE DATABASE
+
 //        init {
 //            itemView.setOnClickListener {
 //                currentForecastPeriod.let(onClick)
