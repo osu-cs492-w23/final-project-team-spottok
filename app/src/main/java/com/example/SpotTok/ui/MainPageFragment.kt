@@ -19,12 +19,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubsearchwithnavigation.R
 import com.example.SpotTok.data.LoadingStatus
+import com.example.SpotTok.data.Tracks
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class MainPageFragment: Fragment(R.layout.main_page_fragment) {
     private val TAG = "MainActivity"
 
-    private val repoListAdapter = SongAdapter(::onGitHubRepoClick)
+    private val repoListAdapter = SongAdapter(::onSongClick)
     private val viewModel: MainPageViewModel by viewModels()
 
     private lateinit var searchResultsListRV: RecyclerView
@@ -37,21 +38,21 @@ class MainPageFragment: Fragment(R.layout.main_page_fragment) {
 
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val searchBoxET: EditText = findViewById(R.id.et_search_box)
-        val searchBtn: Button = findViewById(R.id.btn_search)
 
-        searchErrorTV = findViewById(R.id.tv_search_error)
-        loadingIndicator = findViewById(R.id.loading_indicator)
+        val searchBoxET: EditText = view.findViewById(R.id.et_search_box)
+        val searchBtn: Button = view.findViewById(R.id.btn_search)
+
+        searchErrorTV = view.findViewById(R.id.tv_search_error)
+        loadingIndicator = view.findViewById(R.id.loading_indicator)
 
         /*
          * Set up RecyclerView.
          */
-        searchResultsListRV = findViewById(R.id.rv_search_results)
-        searchResultsListRV.layoutManager = LinearLayoutManager(this)
+        searchResultsListRV = view.findViewById(R.id.rv_search_results)
+        searchResultsListRV.layoutManager = LinearLayoutManager(requireContext())
         searchResultsListRV.setHasFixedSize(true)
         searchResultsListRV.adapter = repoListAdapter
 
@@ -59,15 +60,15 @@ class MainPageFragment: Fragment(R.layout.main_page_fragment) {
          * Set up an observer on the current search results.  Every time the search results change,
          * send the new search results into the RecyclerView adapter to be displayed.
          */
-        viewModel.searchResults.observe(this) { searchResults ->
-            repoListAdapter.updateRepoList(searchResults)
+        viewModel.searchResults.observe(viewLifecycleOwner) { searchResults ->
+            repoListAdapter.updatePlaylist(searchResults)
         }
 
         /*
          * Set up an observer on the loading status of the API query.  Display the correct UI
          * elements based on the current loading status.
          */
-        viewModel.loadingStatus.observe(this) { loadingStatus ->
+        viewModel.loadingStatus.observe(viewLifecycleOwner) { loadingStatus ->
             when (loadingStatus) {
                 LoadingStatus.LOADING -> {
                     loadingIndicator.visibility = View.VISIBLE
@@ -91,7 +92,7 @@ class MainPageFragment: Fragment(R.layout.main_page_fragment) {
          * Set up an observer on the error message associated with the current API query.  If the
          * error message is not null, display it to the user.
          */
-        viewModel.errorMessage.observe(this) { errorMessage->
+        viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage->
             if (errorMessage != null) {
                 Log.d(TAG, "Error executing search query: $errorMessage")
                 searchErrorTV.text = getString(R.string.search_error, errorMessage)
@@ -103,32 +104,22 @@ class MainPageFragment: Fragment(R.layout.main_page_fragment) {
          * using the search query entered by the user.  Also use the values of the appropriate
          * settings to influence the API call.
          */
-        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         searchBtn.setOnClickListener {
             val query = searchBoxET.text.toString()
             if (!TextUtils.isEmpty(query)) {
                 val sort = prefs.getString(getString(R.string.pref_sort_key), null)
-                val user = prefs.getString(getString(R.string.pref_user_key), null)
-                val firstIssues = prefs.getInt(getString(R.string.pref_first_issues_key), 0)
-                val languages = prefs.getStringSet(getString(R.string.pref_language_key), null)
-                viewModel.loadSearchResults(query, sort, user, languages, firstIssues)
+                viewModel.loadSearchResults(query, sort)
                 searchResultsListRV.scrollToPosition(0)
             }
         }
     }
 
-    /**
-     * This method is passed into the RecyclerView adapter to handle clicks on individual items
-     * in the list of GitHub repos.  When a repo is clicked, a new activity is launched to view
-     * details about that repo.
-     */
-    private fun onGitHubRepoClick(repo: GitHubRepo) {
-        val intent = Intent(this, RepoDetailActivity::class.java)
-        intent.putExtra(EXTRA_GITHUB_REPO, repo)
-        startActivity(intent)
+    private fun onSongClick(song: Tracks) {
+
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.activity_main, menu)
         return true
     }
@@ -178,5 +169,5 @@ class MainPageFragment: Fragment(R.layout.main_page_fragment) {
             }
             else -> super.onTouchEvent(event)
         }
-    }
+    }*/
 }
