@@ -8,5 +8,5 @@ class SpotifyEntity(
     @PrimaryKey
     val songName: String,
 
-    val albumName: String
+    val artistName: String
 ) : java.io.Serializable

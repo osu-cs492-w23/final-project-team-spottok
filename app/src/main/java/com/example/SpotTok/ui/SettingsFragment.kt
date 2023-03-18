@@ -20,16 +20,17 @@ class SettingsFragment: PreferenceFragmentCompat() {
          *
          * https://developer.android.com/guide/topics/resources/string-resource#Plurals
          */
-        val languagePref: MultiSelectListPreference? = findPreference(
-            getString(R.string.pref_language_key)
+        /*val genrePref: MultiSelectListPreference? = findPreference(
+            getString(R.string.pref_sort_key)
         )
-        languagePref?.summaryProvider = Preference.SummaryProvider<MultiSelectListPreference> {
+        genrePref?.summaryProvider = Preference.SummaryProvider<MultiSelectListPreference> {
             val n = it.values.size
             if (n == 0) {
-                getString(R.string.pref_language_not_set)
-            } else {
-                resources.getQuantityString(R.plurals.pref_language_summary, n, n)
+                getString(R.string.pref_sort_default)
             }
-        }
+            //else {
+                //resources.getQuantityString(R.plurals.pref_sort_key, n, n)
+            //}
+        }*/
     }
 }

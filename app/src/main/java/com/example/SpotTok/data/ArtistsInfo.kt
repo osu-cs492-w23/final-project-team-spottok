@@ -4,7 +4,8 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class AlbumInfo(
+data class ArtistsInfo(
+    // this will grab the name of the artist from the list of artists
     @Json(name = "name")
-    val albumName: String
-) : java.io.Serializable
+    val artistName: String
+): java.io.Serializable

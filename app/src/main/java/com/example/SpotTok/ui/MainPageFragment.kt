@@ -14,19 +14,18 @@ import android.widget.TextView
 import androidx.core.view.MotionEventCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubsearchwithnavigation.R
 import com.example.SpotTok.data.LoadingStatus
-import com.example.SpotTok.data.TrackInfo
+import com.example.SpotTok.data.Tracks
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class MainPageFragment: Fragment(R.layout.main_page_fragment) {
     private val TAG = "MainActivity"
 
-    private val repoListAdapter = GitHubRepoListAdapter(::onSongLikeClick)
+    private val repoListAdapter = SongAdapter(::onSongClick)
     private val viewModel: MainPageViewModel by viewModels()
 
     private lateinit var searchResultsListRV: RecyclerView
@@ -43,6 +42,9 @@ class MainPageFragment: Fragment(R.layout.main_page_fragment) {
         super.onCreate(savedInstanceState)
 
 
+        val searchBoxET: EditText = view.findViewById(R.id.et_search_box)
+        val searchBtn: Button = view.findViewById(R.id.btn_search)
+
         searchErrorTV = view.findViewById(R.id.tv_search_error)
         loadingIndicator = view.findViewById(R.id.loading_indicator)
 
@@ -58,9 +60,8 @@ class MainPageFragment: Fragment(R.layout.main_page_fragment) {
          * Set up an observer on the current search results.  Every time the search results change,
          * send the new search results into the RecyclerView adapter to be displayed.
          */
-        viewModel.searchResults.observe(viewLifecycleOwner) {
-                //searchResults ->
-            //repoListAdapter.updateRepoList(searchResults)
+        viewModel.searchResults.observe(viewLifecycleOwner) { searchResults ->
+            repoListAdapter.updatePlaylist(searchResults)
         }
 
         /*
@@ -104,13 +105,69 @@ class MainPageFragment: Fragment(R.layout.main_page_fragment) {
          * settings to influence the API call.
          */
         val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        //val genre = prefs.getString(getString(R.string.pref_genre_key), null)
-        //viewModel.loadSearchResults(/*enter in query parameters*/)
-        searchResultsListRV.scrollToPosition(0)
+        searchBtn.setOnClickListener {
+            val query = searchBoxET.text.toString()
+            if (!TextUtils.isEmpty(query)) {
+                val sort = prefs.getString(getString(R.string.pref_sort_key), null)
+                viewModel.loadSearchResults(query, sort)
+                searchResultsListRV.scrollToPosition(0)
+            }
+        }
+    }
+
+    private fun onSongClick(song: Tracks) {
+
+    }
+
+    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.activity_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_settings -> {
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_bookmarks -> {
+                val intent = Intent(this, LikedSongsFragment::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 
-    private fun onSongLikeClick(song: TrackInfo) {
-        //add track to likes
-    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+
+        val action: Int = MotionEventCompat.getActionMasked(event)
+
+        return when (action) {
+            MotionEvent.ACTION_DOWN -> {
+                Log.d(TAG, "Action was DOWN")
+                true
+            }
+            MotionEvent.ACTION_MOVE -> {
+                Log.d(TAG, "Action was MOVE")
+                true
+            }
+            MotionEvent.ACTION_UP -> {
+                Log.d(TAG, "Action was UP")
+                true
+            }
+            MotionEvent.ACTION_CANCEL -> {
+                Log.d(TAG, "Action was CANCEL")
+                true
+            }
+            MotionEvent.ACTION_OUTSIDE -> {
+                Log.d(TAG, "Movement occurred outside bounds of current screen element")
+                true
+            }
+            else -> super.onTouchEvent(event)
+        }
+    }*/
 }

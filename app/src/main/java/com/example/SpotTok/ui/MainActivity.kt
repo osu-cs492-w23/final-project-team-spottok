@@ -14,6 +14,12 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.core.view.MotionEventCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,8 +30,10 @@ import com.google.android.material.progressindicator.CircularProgressIndicator
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
 
-    private val repoListAdapter = GitHubRepoListAdapter(::onGitHubRepoClick)
+    private val repoListAdapter = LikedSongsAdapter(::onGitHubRepoClick)
     private val viewModel: MainPageViewModel by viewModels()
+
+    private lateinit var appBarConfig: AppBarConfiguration
 
     private lateinit var searchResultsListRV: RecyclerView
     private lateinit var searchErrorTV: TextView
@@ -50,11 +58,23 @@ class MainActivity : AppCompatActivity() {
         searchResultsListRV.adapter = repoListAdapter
 
         /*
+         * Set up the Navigation
+         */
+        val navHostFragment = supportFragmentManager.findFragmentById(
+            R.id.nav_host_fragment
+        ) as NavHostFragment
+        val navController = navHostFragment.navController
+
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        appBarConfig = AppBarConfiguration(navController.graph, drawerLayout)
+        setupActionBarWithNavController(navController, appBarConfig)
+
+        /*
          * Set up an observer on the current search results.  Every time the search results change,
          * send the new search results into the RecyclerView adapter to be displayed.
          */
         viewModel.searchResults.observe(this) { searchResults ->
-            repoListAdapter.updateRepoList(searchResults)
+            repoListAdapter.updateLikedSongList(searchResults)
         }
 
         /*
@@ -102,13 +122,15 @@ class MainActivity : AppCompatActivity() {
             val query = searchBoxET.text.toString()
             if (!TextUtils.isEmpty(query)) {
                 val sort = prefs.getString(getString(R.string.pref_sort_key), null)
-                val user = prefs.getString(getString(R.string.pref_user_key), null)
-                val firstIssues = prefs.getInt(getString(R.string.pref_first_issues_key), 0)
-                val languages = prefs.getStringSet(getString(R.string.pref_language_key), null)
-                viewModel.loadSearchResults(query, sort, user, languages, firstIssues)
+                viewModel.loadSearchResults(query, sort)
                 searchResultsListRV.scrollToPosition(0)
             }
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp(appBarConfig) || super.onSupportNavigateUp()
     }
 
     /**
