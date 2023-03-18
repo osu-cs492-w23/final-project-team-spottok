@@ -26,7 +26,6 @@ class LikedSongsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LikedSongsViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-                //NELSON ATTACH THE CORRECT LAYOUT FOR THE SINGLE LIKED SONG
             .inflate(R.layout.liked_songs_fragment, parent, false)
         return LikedSongsViewHolder(itemView, onLikedSongClick)
     }

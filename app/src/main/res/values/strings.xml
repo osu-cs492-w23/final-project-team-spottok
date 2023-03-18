@@ -23,6 +23,11 @@
     <string name="action_bookmark">Bookmark this repo</string>
     <string name="action_bookmarks">View bookmarks</string>
 
+<!--    Set the appropriate values to prev_language_key-->
+    <string name="pref_language_key">English</string>
+<!--    Set the appropriate values to prev_language_not_set-->
+    <string name="pref_language_not_set">Language not set</string>
+
     <string name="pref_category_search">Search settings</string>
 
     <string name="pref_sort_title">Select Genre</string>
