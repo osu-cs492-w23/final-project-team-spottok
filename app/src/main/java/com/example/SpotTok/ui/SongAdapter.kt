@@ -24,8 +24,8 @@ class SongAdapter(private val onClick: (Tracks) -> Unit)
     var allTracks: List<Tracks> = listOf()
 
     // used to update new playlist items ON MAIN PAGE
-    fun updatePlaylist(spotifyPlaylistResults: SpotifyPlaylistResults) {
-        allTracks = spotifyPlaylistResults.items ?: listOf()
+    fun updatePlaylist(spotifyPlaylistResults: SpotifyPlaylistResults?) {
+        allTracks = spotifyPlaylistResults?.items ?: listOf()
         notifyDataSetChanged()
     }
 
@@ -39,9 +39,9 @@ class SongAdapter(private val onClick: (Tracks) -> Unit)
     }
 
 // ADJUST THIS TO FIT WITH PROJECT
-//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        holder.bind(this.allTracks[position])
-//    }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        //holder.bind(this.allTracks[position])
+    }
 
 
     // NEW ITEM VIEW. USE DATA FROM DATA FOLDERS TO LOAD DATA FOR MAIN PAGE,

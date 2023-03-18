@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
          * send the new search results into the RecyclerView adapter to be displayed.
          */
         viewModel.searchResults.observe(this) { searchResults ->
-            repoListAdapter.updateRepoList(searchResults)
+            repoListAdapter.updateLikedSongList(searchResults)
         }
 
         /*
@@ -122,10 +122,7 @@ class MainActivity : AppCompatActivity() {
             val query = searchBoxET.text.toString()
             if (!TextUtils.isEmpty(query)) {
                 val sort = prefs.getString(getString(R.string.pref_sort_key), null)
-                val user = prefs.getString(getString(R.string.pref_user_key), null)
-                val firstIssues = prefs.getInt(getString(R.string.pref_first_issues_key), 0)
-                val languages = prefs.getStringSet(getString(R.string.pref_language_key), null)
-                viewModel.loadSearchResults(query, sort, user, languages, firstIssues)
+                viewModel.loadSearchResults(query, sort)
                 searchResultsListRV.scrollToPosition(0)
             }
         }

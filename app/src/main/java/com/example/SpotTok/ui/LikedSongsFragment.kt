@@ -25,7 +25,7 @@ class LikedSongsFragment : Fragment(R.layout.liked_songs_fragment) {
         /*
          * Set up RecyclerView
          */
-        likedSongsRV = view.findViewById(R.id.rv_bookmarked_repos)
+        likedSongsRV = view.findViewById(R.id.rv_liked_songs)
         likedSongsRV.layoutManager = LinearLayoutManager(requireContext())
         likedSongsRV.setHasFixedSize(true)
         likedSongsRV.adapter = allSongAdapter

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.SpotTok.data.SpotifyEntity
 import com.example.SpotTok.data.Tracks
 import com.example.githubsearchwithnavigation.R
+import kotlinx.coroutines.NonDisposableHandle.parent
 import kotlin.reflect.KFunction1
 
 class LikedSongsAdapter(
@@ -26,8 +27,14 @@ class LikedSongsAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LikedSongsViewHolder {
         val itemView = LayoutInflater.from(parent.context)
                 //NELSON ATTACH THE CORRECT LAYOUT FOR THE SINGLE LIKED SONG
-            .inflate(R.layout.liked_song_item, parent, false)
+            .inflate(R.layout.liked_songs_fragment, parent, false)
         return LikedSongsViewHolder(itemView, onLikedSongClick)
+    }
+
+    override fun onBindViewHolder(holder: LikedSongsViewHolder, position: Int) {
+        //val view = LayoutInflater.from(parent.context)
+        //    .inflate(R.layout.main_page_fragment, parent, false)
+        //return SongAdapter.ViewHolder(view, onClick)
     }
 
     class LikedSongsViewHolder(

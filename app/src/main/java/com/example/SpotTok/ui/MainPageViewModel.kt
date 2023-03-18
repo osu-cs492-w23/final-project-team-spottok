@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.SpotTok.api.SpotifyService
 import com.example.SpotTok.data.MainPageSongsRepository
 import com.example.SpotTok.data.LoadingStatus
+import com.example.SpotTok.data.SpotifyPlaylistResults
+import com.example.SpotTok.data.Tracks
 import kotlinx.coroutines.launch
 
 
@@ -25,13 +27,13 @@ class MainPageViewModel: ViewModel() {
      * These search results are exposed to the outside world in immutable form via the public
      * `searchResults` property below.
      */
-    private val _searchResults = MutableLiveData<List<GitHubRepo>?>(null)
+    private val _searchResults = MutableLiveData<SpotifyPlaylistResults?>(null)
 
     /**
      * This value provides the most recent search results returned from the GitHub API.  It is
      * null if there are no current search results (e.g. in the case of an error).
      */
-    val searchResults: LiveData<List<GitHubRepo>?> = _searchResults
+    val searchResults: LiveData<SpotifyPlaylistResults?> = _searchResults
 
     /*
      * The current loading state is stored in this private property.  This loading state is exposed
@@ -75,14 +77,11 @@ class MainPageViewModel: ViewModel() {
     fun loadSearchResults(
         query: String,
         sort: String?,
-        user: String?,
-        languages: Set<String>?,
-        firstIssues: Int
     ) {
         viewModelScope.launch {
             _loadingStatus.value = LoadingStatus.LOADING
             _errorMessage.value = null
-            val result = repository.loadRepositoriesSearch(query, sort, user, languages, firstIssues)
+            val result = repository.loadPlaylist(query, sort, null, null)
             _loadingStatus.value = when (result.isSuccess) {
                 true -> LoadingStatus.SUCCESS
                 false -> LoadingStatus.ERROR
