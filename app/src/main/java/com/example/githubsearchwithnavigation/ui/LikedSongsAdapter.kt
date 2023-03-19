@@ -1,14 +1,11 @@
-package com.example.SpotTok.ui
+package com.example.githubsearchwithnavigation.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.SpotTok.data.SpotifyEntity
-import com.example.SpotTok.data.Tracks
+import com.example.githubsearchwithnavigation.data.SpotifyEntity
 import com.example.githubsearchwithnavigation.R
-import kotlinx.coroutines.NonDisposableHandle.parent
-import kotlin.reflect.KFunction1
 
 class LikedSongsAdapter(
     private val onLikedSongClick: (SpotifyEntity) -> Unit

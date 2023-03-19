@@ -38,9 +38,10 @@
     <string name="pref_sort_rap">Rap</string>
     <string name="pref_sort_pop">Pop</string>
 
-    <string name="pref_sort_val_kpop" translatable="false">Kpop</string>
-    <string name="pref_sort_val_rap" translatable="false">Rap</string>
-    <string name="pref_sort_val_pop" translatable="false">Pop</string>
+
+    <string name="pref_sort_val_kpop" translatable="false">37i9dQZF1DX3ZeFHRhhi7Y</string>
+    <string name="pref_sort_val_rap" translatable="false">37i9dQZF1DX0XUsuxWHRQd</string>
+    <string name="pref_sort_val_pop" translatable="false">37i9dQZF1DWYBO1MoTDhZI</string>
 
     <string name="pref_sort_default">@string/pref_sort_val_kpop</string>
 

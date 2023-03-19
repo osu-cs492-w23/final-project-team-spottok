@@ -1,15 +1,12 @@
-package com.example.SpotTok.ui
+package com.example.githubsearchwithnavigation.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.SpotTok.data.SpotifyPlaylistResults
-import com.example.SpotTok.data.TrackInfo
-import com.example.SpotTok.data.Tracks
+import com.example.githubsearchwithnavigation.data.SpotifyPlaylistResults
+import com.example.githubsearchwithnavigation.data.Tracks
 import com.example.githubsearchwithnavigation.R
 
 /**

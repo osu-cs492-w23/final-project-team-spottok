@@ -1,14 +1,13 @@
-package com.example.SpotTok.ui
+package com.example.githubsearchwithnavigation.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.SpotTok.api.SpotifyService
-import com.example.SpotTok.data.MainPageSongsRepository
-import com.example.SpotTok.data.LoadingStatus
-import com.example.SpotTok.data.SpotifyPlaylistResults
-import com.example.SpotTok.data.Tracks
+import com.example.githubsearchwithnavigation.api.SpotifyService
+import com.example.githubsearchwithnavigation.data.MainPageSongsRepository
+import com.example.githubsearchwithnavigation.data.LoadingStatus
+import com.example.githubsearchwithnavigation.data.SpotifyPlaylistResults
 import kotlinx.coroutines.launch
 
 
@@ -75,13 +74,12 @@ class MainPageViewModel: ViewModel() {
      *   results.
      */
     fun loadSearchResults(
-        query: String,
-        sort: String?,
+        sort: String,
     ) {
         viewModelScope.launch {
             _loadingStatus.value = LoadingStatus.LOADING
             _errorMessage.value = null
-            val result = repository.loadPlaylist(query, sort, null, null)
+            val result = repository.loadPlaylist(sort, null, null, null)
             _loadingStatus.value = when (result.isSuccess) {
                 true -> LoadingStatus.SUCCESS
                 false -> LoadingStatus.ERROR
