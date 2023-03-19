@@ -20,12 +20,12 @@ interface SpotifyService {
         @Query("market") market: String? = "ES",
         @Query("fields") fields: String? = "items(added_by.id,href,track(name,album(name)))",
         @Query("limit") limit: String? = "15",
-        @Header("Authorization: ") API_TOKEN: String
+        @Header("Authorization:") TOKEN: String = API_TOKEN
     ) : Response<SpotifyPlaylistResults>
 
     companion object {
         private const val BASE_URL = "https://api.spotify.com/v1/"
-        private const val API_TOKEN = "BQDYMdBHF9ujb5GmrtmUlThF3VmH1bOdf3xkwtXhrwMzuw-ocxjE0OypMX7-wzOrWaGU0ILETRUsRF-u_RrBPiWOOUGUintmn8V5_FTRqk_sdOyDs0g50KbXJ5UHfDV9A6rIgHU9EnTqPmqcBASx5c6WRblqt6Pa_GRIVTyotsmvR15CWIM"
+        private const val API_TOKEN = "BQCAdJDWAWq9XmFQ45vibQxu8zF9Be1rR4mto3hMWwh7thcBZ0qHAd9-OOhptXhFL9UvFZgUmttgWOm2s2dHVPeoj2uxKExIq0BGhXk97Iam2gMIU-EFyAItS1j0QJFNKJB8eGWkkJZrE4Ie7dfqSq0pIKjXdSUuhb4TvCnm2c51wSlt36iq3mMxfy8F6p5A"
         fun create() : SpotifyService {
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
