@@ -1,6 +1,7 @@
-package com.example.SpotTok.data
+package com.example.githubsearchwithnavigation.data
 
-import com.example.SpotTok.api.SpotifyService
+import android.util.Log
+import com.example.githubsearchwithnavigation.api.SpotifyService
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

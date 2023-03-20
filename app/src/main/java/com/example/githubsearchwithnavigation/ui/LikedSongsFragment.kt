@@ -1,4 +1,4 @@
-package com.example.SpotTok.ui
+package com.example.githubsearchwithnavigation.ui
 
 import android.os.Bundle
 import android.view.View
@@ -6,8 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.SpotTok.data.SpotifyEntity
-import com.example.SpotTok.data.Tracks
+import com.example.githubsearchwithnavigation.data.SpotifyEntity
 import com.example.githubsearchwithnavigation.R
 import com.google.android.material.snackbar.Snackbar
 

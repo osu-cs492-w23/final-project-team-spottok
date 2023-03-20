@@ -1,12 +1,12 @@
-package com.example.SpotTok.ui
+package com.example.githubsearchwithnavigation.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.SpotTok.data.AppDatabase
-import com.example.SpotTok.data.LikedSongsRepository
-import com.example.SpotTok.data.SpotifyEntity
+import com.example.githubsearchwithnavigation.data.AppDatabase
+import com.example.githubsearchwithnavigation.data.LikedSongsRepository
+import com.example.githubsearchwithnavigation.data.SpotifyEntity
 import kotlinx.coroutines.launch
 
 /**

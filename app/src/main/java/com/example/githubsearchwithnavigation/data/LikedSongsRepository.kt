@@ -1,4 +1,4 @@
-package com.example.SpotTok.data
+package com.example.githubsearchwithnavigation.data
 
 class LikedSongsRepository(
     private val dao: SpotifyDao

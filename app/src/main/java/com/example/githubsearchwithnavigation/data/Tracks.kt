@@ -1,4 +1,4 @@
-package com.example.SpotTok.data
+package com.example.githubsearchwithnavigation.data
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

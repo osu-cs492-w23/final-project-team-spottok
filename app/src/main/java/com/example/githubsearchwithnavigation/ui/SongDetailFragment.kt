@@ -1,18 +1,8 @@
-package com.example.SpotTok.ui
+package com.example.githubsearchwithnavigation.ui
 
-import android.content.ActivityNotFoundException
-import android.content.Intent
-import android.net.Uri
-import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.widget.TextView
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.githubsearchwithnavigation.R
-import com.google.android.material.snackbar.Snackbar
 
 const val EXTRA_GITHUB_REPO = "GITHUB_REPO"
 

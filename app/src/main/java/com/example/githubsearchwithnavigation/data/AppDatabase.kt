@@ -1,4 +1,4 @@
-package com.example.SpotTok.data
+package com.example.githubsearchwithnavigation.data
 
 import android.content.Context
 import androidx.room.Database
