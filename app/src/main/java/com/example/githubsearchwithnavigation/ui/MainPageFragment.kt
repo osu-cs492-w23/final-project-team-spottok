@@ -28,6 +28,7 @@ class MainPageFragment: Fragment(R.layout.main_page_fragment) {
 
 //    private val repoListAdapter = SongAdapter(::onSongClick)
     private val viewModel: MainPageViewModel by viewModels()
+    private val likedModel: LikedSongsViewModel by viewModels()
 
     private lateinit var searchResultsListRV: RecyclerView
     private lateinit var searchErrorTV: TextView
@@ -141,13 +142,7 @@ class MainPageFragment: Fragment(R.layout.main_page_fragment) {
                 songItemArtist.text as String
             )
 
-//            val repository = LikedSongsRepository(
-//                AppDatabase.getInstance(application).spotifyDao()
-//            )
-
-//            viewModelScope.launch {
-//                repository.insertLikedSong(likedSong)
-//            }
+            likedModel.addLikedSong(likedSong)
         }
 
         val connectionParams = ConnectionParams.Builder(clientId)
