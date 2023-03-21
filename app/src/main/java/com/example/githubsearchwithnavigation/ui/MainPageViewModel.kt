@@ -1,5 +1,6 @@
 package com.example.githubsearchwithnavigation.ui
 
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -60,6 +61,11 @@ class MainPageViewModel: ViewModel() {
      * null.
      */
     val errorMessage: LiveData<String?> = _errorMessage
+
+    fun onScrollChangeListener(v: View, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int): View.OnScrollChangeListener =
+        View.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+
+        }
 
     /**
      * This method triggers a new search query to the GitHub API's "search repositories" method.
