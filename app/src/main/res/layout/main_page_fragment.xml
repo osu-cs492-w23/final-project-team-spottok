@@ -7,25 +7,41 @@
     android:orientation="vertical"
     tools:context="com.example.githubsearchwithnavigation.ui.MainActivity">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:hint="@string/search_hint"
-        app:startIconDrawable="@drawable/ic_baseline_search_24">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_search_box"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:hint="@string/search_hint"-->
+<!--        app:startIconDrawable="@drawable/ic_baseline_search_24">-->
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/et_search_box"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content" />-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
     <Button
-        android:id="@+id/btn_search"
+        android:id="@+id/btn_skip_next"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="4dp"
         style="?attr/materialButtonStyle"
-        android:text="@string/search" />
+        android:text="@string/skip_next" />
+
+    <Button
+        android:id="@+id/btn_skip_prev"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        style="?attr/materialButtonStyle"
+        android:text="@string/skip_prev" />
+
+    <Button
+        android:id="@+id/btn_like_song"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        style="?attr/materialButtonStyle"
+        android:text="@string/like_song" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

@@ -1,5 +1,6 @@
 package com.example.githubsearchwithnavigation.ui
 
+import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,13 +13,14 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubsearchwithnavigation.R
-import com.example.githubsearchwithnavigation.data.LoadingStatus
 import com.google.android.material.progressindicator.CircularProgressIndicator
 import com.spotify.android.appremote.api.ConnectionParams
 import com.spotify.android.appremote.api.Connector
 import com.spotify.android.appremote.api.SpotifyAppRemote
 import com.spotify.protocol.types.Track
 import android.view.View.OnScrollChangeListener
+import com.example.githubsearchwithnavigation.data.*
+import kotlinx.coroutines.launch
 
 
 class MainPageFragment: Fragment(R.layout.main_page_fragment) {
@@ -44,9 +46,9 @@ class MainPageFragment: Fragment(R.layout.main_page_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-        val searchBoxET: EditText = view.findViewById(R.id.et_search_box)
-        val searchBtn: Button = view.findViewById(R.id.btn_search)
+        val skipNextBtn: Button = view.findViewById(R.id.btn_skip_next)
+        val skipPrevBtn: Button = view.findViewById(R.id.btn_skip_prev)
+        val likeSongBtn: Button = view.findViewById(R.id.btn_like_song)
 
         searchErrorTV = view.findViewById(R.id.tv_search_error)
         loadingIndicator = view.findViewById(R.id.loading_indicator)
@@ -107,6 +109,46 @@ class MainPageFragment: Fragment(R.layout.main_page_fragment) {
 
 //        viewModel.loadSearchResults(sort!!)
         searchResultsListRV.scrollToPosition(0)
+
+        skipNextBtn.setOnClickListener() {
+            spotifyAppRemote?.let {
+                it.playerApi.skipNext()
+                it.playerApi.subscribeToPlayerState().setEventCallback {
+                    val track: Track = it.track
+                    Log.d("MainActivity", track.name + " by " + track.artist.name)
+
+                    songItemTitle.text = track.name
+                    songItemArtist.text = track.artist.name
+                }
+            }
+        }
+
+        skipPrevBtn.setOnClickListener() {
+            spotifyAppRemote?.let {
+                it.playerApi.skipPrevious()
+                it.playerApi.subscribeToPlayerState().setEventCallback {
+                    val track: Track = it.track
+                    Log.d("MainActivity", track.name + " by " + track.artist.name)
+
+                    songItemTitle.text = track.name
+                    songItemArtist.text = track.artist.name
+                }
+            }
+        }
+
+        likeSongBtn.setOnClickListener() {
+            val likedSong = SpotifyEntity(songItemTitle.text as String,
+                songItemArtist.text as String
+            )
+
+//            val repository = LikedSongsRepository(
+//                AppDatabase.getInstance(application).spotifyDao()
+//            )
+
+//            viewModelScope.launch {
+//                repository.insertLikedSong(likedSong)
+//            }
+        }
 
         val connectionParams = ConnectionParams.Builder(clientId)
             .setRedirectUri(redirectUri)
@@ -175,19 +217,6 @@ class MainPageFragment: Fragment(R.layout.main_page_fragment) {
             SpotifyAppRemote.disconnect(it)
         }
     }
-
-//    override fun onScrollChangeListener(v: View?, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int) {
-//        spotifyAppRemote?.let {
-//            it.playerApi.skipNext()
-//            it.playerApi.subscribeToPlayerState().setEventCallback {
-//                val track: Track = it.track
-//                Log.d("MainActivity", track.name + " by " + track.artist.name)
-//
-//                songItemTitle.text = track.name
-//                songItemArtist.text = track.artist.name
-//            }
-//        }
-//    }
 
     /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.activity_main, menu)

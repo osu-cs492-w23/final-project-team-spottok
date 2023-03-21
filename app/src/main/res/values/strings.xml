@@ -12,6 +12,10 @@
     <string name="search">Search</string>
     <string name="search_hint">Search in SpotTok</string>
 
+    <string name="skip_next">Next</string>
+    <string name="skip_prev">Previous</string>
+    <string name="like_song">Like</string>
+
     <string name="action_share">Share</string>
     <string name="share_text">%1$s on GitHub: %2$s</string>
 
