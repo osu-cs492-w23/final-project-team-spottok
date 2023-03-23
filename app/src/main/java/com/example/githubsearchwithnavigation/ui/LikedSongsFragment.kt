@@ -18,6 +18,8 @@ class LikedSongsFragment : Fragment(R.layout.liked_songs_fragment) {
 
     private lateinit var likedSongsRV: RecyclerView
 
+    private val likedModel: LikedSongsViewModel by viewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -43,6 +45,8 @@ class LikedSongsFragment : Fragment(R.layout.liked_songs_fragment) {
             "Hey! You liked this song!",
             Snackbar.LENGTH_LONG
         ).show()
+
+        likedModel.removeLikedSong(spotifyEntity)
 
     }
 }
