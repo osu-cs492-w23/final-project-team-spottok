@@ -42,7 +42,7 @@ class LikedSongsFragment : Fragment(R.layout.liked_songs_fragment) {
         // Display Snackbar of song like feature here
         Snackbar.make(
             likedSongsRV,
-            "Hey! You liked this song!",
+            "You absolutely hate this garbage song",
             Snackbar.LENGTH_LONG
         ).show()
 
