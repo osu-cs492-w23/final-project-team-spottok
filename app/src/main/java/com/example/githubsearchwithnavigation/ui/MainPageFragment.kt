@@ -19,6 +19,7 @@ import com.spotify.android.appremote.api.Connector
 import com.spotify.android.appremote.api.SpotifyAppRemote
 import com.spotify.protocol.types.Track
 import android.view.View.OnScrollChangeListener
+import android.widget.ImageButton
 import com.example.githubsearchwithnavigation.data.*
 import kotlinx.coroutines.launch
 
@@ -47,8 +48,8 @@ class MainPageFragment: Fragment(R.layout.main_page_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val skipNextBtn: Button = view.findViewById(R.id.btn_skip_next)
-        val skipPrevBtn: Button = view.findViewById(R.id.btn_skip_prev)
+        val skipNextBtn: ImageButton = view.findViewById(R.id.btn_skip_next)
+        val skipPrevBtn: ImageButton = view.findViewById(R.id.btn_skip_prev)
         val likeSongBtn: Button = view.findViewById(R.id.btn_like_song)
 
         searchErrorTV = view.findViewById(R.id.tv_search_error)
